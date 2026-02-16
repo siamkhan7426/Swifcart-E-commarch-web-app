@@ -99,7 +99,7 @@ Each product card must include:
 - **Add to Cart button**
 
 4) Modal on "Details" Click
-Clicking the "Details" button on a card opens a modal with full product details:
+    Clicking the "Details" button on a card opens a modal with full product details:
 - Full Title
 - Full Description
 - Price & Rating
