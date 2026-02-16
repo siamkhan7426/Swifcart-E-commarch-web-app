@@ -1,4 +1,5 @@
 
+
 // -------------------------trendingDataLoadAPi function create----------------
 const trendingDataLoadAPi = async () => {
     const responsive = await fetch("https://fakestoreapi.com/products");
@@ -6,41 +7,12 @@ const trendingDataLoadAPi = async () => {
     displayCardTrending(data);
 }
 trendingDataLoadAPi()
-
-
-// ------------------------------- displayCard trendingDataLoadAPi --------------------
-
-/***
- * category
-: 
-"men's clothing"
-description
-: 
-"Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket."
-id
-: 
-2
-image
-: 
-"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png"
-price
-: 
-22.3
-rating
-: 
-{rate: 4.1, count: 259}
-title
-: 
-"Mens Casual Premium Slim Fit T-Shirts "
- */
-
+// -----------------------------------display Card 3 trending api function-----------------------------
 const displayCardTrending = (threCards) => {
     const cardContainer = document.getElementById("card-continer");
     const cardRating = threCards.filter(item => item.rating.rate > 4).slice(0,3);
-    cardRating.forEach(cardElement => {
-       
+    cardRating.forEach(cardElement => { 
         const { category, description, image, price, rating:rate, rating: count, title } = cardElement
-        console.log(description);
         const div = document.createElement("div");
         div.innerHTML = `
        <div class="w-full h-full border-1 border-gray-300 rounded-lg space-y-2">
