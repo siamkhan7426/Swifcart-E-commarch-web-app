@@ -1,4 +1,4 @@
-// ---------------------loading sdpinner function -----------------
+// ---------------------loading sdpinner function star-----------------
 
 const loadSpinner =(stus)=>{
   if(stus=== true){
@@ -10,15 +10,34 @@ const loadSpinner =(stus)=>{
   }
 };
 
+// ---------------------loading sdpinner function end -----------------
+
+// -------------------------------------remove active class function -----------------
+const RemoveActive = ()=>{
+  const dynamicBtn = document.querySelectorAll(".dynamic-btn");
+  dynamicBtn.forEach(btn=>btn.classList.remove("active"));
+}
+
+// -------------------------------------remove active class function -----------------
 
 // ------------------------load dynamic buttum card fuction call ---------------------
 const loadCategoriApiData = async (categorisId)=>{
     loadSpinner(true)
         const res = await fetch(`https://fakestoreapi.com/products/category/${(categorisId)}`);
-        const data = await res.json()
-       loadDisplyDynamicCatgoriCard(data);
+        const data = await res.json();
+        {
+        RemoveActive()
+       const activeBtn = document.getElementById(`active-btn-${categorisId}`);
+        activeBtn.classList.add("active");
+        loadDisplyDynamicCatgoriCard(data);
+        }
+
         
 };
+// ------------------------load dynamic buttum card fuction call ---------------------
+
+
+
 // -------------------------------load dynamic button categroy card show ------------
 
 const loadDisplyDynamicCatgoriCard = (catageri)=>{
@@ -52,6 +71,8 @@ const loadDisplyDynamicCatgoriCard = (catageri)=>{
 
 // -------------------------------load dynamic button categroy card show end ------------
 
+
+
 // ------------------------- loadidFunction dynamic api star------------------------
 const loadIdFucntion = async (id)=>{
   const res = await fetch(`https://fakestoreapi.com/products/${id}`)
@@ -59,6 +80,8 @@ const loadIdFucntion = async (id)=>{
   loadDynamicModalFunction(data);
 };
 // ------------------------- loadidFunction dynamic api end------------------------
+
+
 
 
 // -----------------------------dynamic modal show star---------------------------
@@ -83,6 +106,8 @@ document.getElementById("my_modal").showModal()
 };
 // -----------------------------dynamic modal show end--------------------
 
+
+
 // -------------------------trendingDataLoadAPi function create----------------
 const trendingDataLoadAPi = async () => {
     const responsive = await fetch("https://fakestoreapi.com/products");
@@ -90,6 +115,9 @@ const trendingDataLoadAPi = async () => {
     displayCardTrending(data);
 };
  trendingDataLoadAPi();
+// -------------------------trendingDataLoadAPi function create----------------
+
+
 // -----------------------------------display Card 3 trending api function-----------------------------
 const displayCardTrending = (Cards) => {
     const AllProdcutCardContainer = document.getElementById("all-procut-card-container");
@@ -118,6 +146,7 @@ const displayCardTrending = (Cards) => {
         AllProdcutCardContainer.append(div);
     });
 };
+// -----------------------------------display Card 3 trending api function-----------------------------
 
 
 // --------------------disply daynamic button function----------------------
@@ -126,13 +155,15 @@ const displayCardTrending = (Cards) => {
         // buttonDaynamicContainer.innerHTML = "";
          btnCategori.forEach(btn=> {
          const button = document.createElement("button");
-         button.className ="btn btn-outline btn-primary "
-        button.innerHTML = btn
+         button.className ="btn btn-outline btn-primary dynamic-btn"
+         button.id=`active-btn-${btn}`;
+         button.innerHTML = btn
          button.addEventListener("click", () => loadCategoriApiData(btn));
        buttonDaynamicContainer.appendChild(button)
     });
      loadSpinner(false)
  };
+// --------------------disply daynamic button function----------------------
 
 
 // ----------------------dynamic button api  call function ---------------------
@@ -140,7 +171,9 @@ const displayCardTrending = (Cards) => {
    loadSpinner(true)
     const res = await fetch("https://fakestoreapi.com/products/categories");
     const data = await res.json();
-   displybtnDynamic(data);
+      displybtnDynamic(data);
+    
+   
  };
 loadDynamicBtnApi ();
 
