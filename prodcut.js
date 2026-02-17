@@ -12,6 +12,7 @@ const loadSpinner =(stus)=>{
 
 // ---------------------loading sdpinner function end -----------------
 
+
 // -------------------------------------remove active class function -----------------
 const RemoveActive = ()=>{
   const dynamicBtn = document.querySelectorAll(".dynamic-btn");
