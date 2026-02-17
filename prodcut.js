@@ -1,5 +1,19 @@
+// ---------------------loading sdpinner function -----------------
+
+const loadSpinner =(stus)=>{
+  if(stus=== true){
+      document.getElementById("spinner").classList.remove("hidden");
+      document.getElementById("all-procut-card-container").classList.add("hidden")
+  }else{
+    document.getElementById("spinner").classList.add("hidden");
+    document.getElementById("all-procut-card-container").classList.remove("hidden")
+  }
+};
+
+
 // ------------------------load dynamic buttum card fuction call ---------------------
 const loadCategoriApiData = async (categorisId)=>{
+    loadSpinner(true)
         const res = await fetch(`https://fakestoreapi.com/products/category/${(categorisId)}`);
         const data = await res.json()
        loadDisplyDynamicCatgoriCard(data);
@@ -33,16 +47,17 @@ const loadDisplyDynamicCatgoriCard = (catageri)=>{
        `
         AllProdcutCardContainer.append(div);
     });
-}
+     loadSpinner(false)
+};
 
-
+// -------------------------------load dynamic button categroy card show end ------------
 
 // ------------------------- loadidFunction dynamic api star------------------------
 const loadIdFucntion = async (id)=>{
   const res = await fetch(`https://fakestoreapi.com/products/${id}`)
   const data = await res.json();
   loadDynamicModalFunction(data);
-}
+};
 // ------------------------- loadidFunction dynamic api end------------------------
 // -----------------------------dynamic modal show star--------------------
 const loadDynamicModalFunction = (modal)=>{
@@ -68,8 +83,8 @@ const trendingDataLoadAPi = async () => {
     const responsive = await fetch("https://fakestoreapi.com/products");
     const data = await responsive.json();
     displayCardTrending(data);
-}
- trendingDataLoadAPi()
+};
+ trendingDataLoadAPi();
 // -----------------------------------display Card 3 trending api function-----------------------------
 const displayCardTrending = (Cards) => {
     const AllProdcutCardContainer = document.getElementById("all-procut-card-container");
@@ -111,18 +126,17 @@ const displayCardTrending = (Cards) => {
          button.addEventListener("click", () => loadCategoriApiData(btn));
        buttonDaynamicContainer.appendChild(button)
     });
-
+     loadSpinner(false)
  };
 
 
 // ----------------------dynamic button api  call function ---------------------
  const loadDynamicBtnApi = async ()=>{
+   loadSpinner(true)
     const res = await fetch("https://fakestoreapi.com/products/categories");
     const data = await res.json();
    displybtnDynamic(data);
-    
-
- }
-loadDynamicBtnApi ()
+ };
+loadDynamicBtnApi ();
 
 

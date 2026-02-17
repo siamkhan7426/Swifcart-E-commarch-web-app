@@ -59,8 +59,16 @@
     <h1 class="text-4xl mb-4 font-extrabold text-center">Our prodcuts</h1>
     <div  id="button-daynamic-container" class="flex gap-2 flex-col md:flex-row lg:flex-row justify-center items-center py-5">
     <button onclick="trendingDataLoadAPi()" class="btn btn-primary">All Prodcut</button>
-    
     </div>
+    <!-- spinner section star -->
+    <section id="spinner" class="hidden text-center my-5">
+    <span class="loading loading-bars loading-xs"></span>
+    <span class="loading loading-bars loading-sm"></span>
+    <span class="loading loading-bars loading-md"></span>
+    <span class="loading loading-bars loading-lg"></span>
+    <span class="loading loading-bars loading-xl"></span>
+    </section>
+
   <!-- card-container -->
   <div id="all-procut-card-container" class=" grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
     <!-- card 1 -->
@@ -70,7 +78,6 @@
 
 
  <!-- modal section str -->
-   <!-- modal section -->
 <section>
 <dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box">
